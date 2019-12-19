@@ -22,23 +22,24 @@ while True:
     data  = ser.read()
     value = int.from_bytes(data, 'big') - 48
     hour = de_now.strftime('%H')
-    if value < normal and hour == timeMin and hour== timeMax:
-        ser.write(b"1");
+    if value < normal:
+        if hour >= timeMin and hour <= timeMax:
+            ser.write(b"0");
         
-        msg = MIMEText('WORNIG!!! Someone invaded!')
-        msg['subject'] = 'WORNIG!!!'
-        msg['From'] = 'from_gmailaddress'
-        msg['To'] = 'to_mailaddress'
-        msg['Date'] = formatdate()
-        smtpobj.sendmail("from_gmailaddress", "to_mailaddress", msg.as_string())
-    elif value < normal and hour != timeMin or hour != timeMax:
-        ser.write(b"0");
+            msg = MIMEText('Someone enter or exit')
+            msg['subject'] = 'notification'
+            msg['From'] = 'from_gmailaddress'
+            msg['To'] = 'to_mailaddress'
+            msg['Date'] = formatdate()
+            smtpobj.sendmail("from_gmailaddress", "to_mailaddress", msg.as_string())
+        else:
+            ser.write(b"1");
         
-        msg = MIMEText('Someone enter or exit')
-        msg['subject'] = 'notification'
-        msg['From'] = 'from_gmailaddress'
-        msg['To'] = 'to_mailaddress'
-        msg['Date'] = formatdate()
-        smtpobj.sendmail("from_gmailaddress", "to_mailaddress", msg.as_string())
+            msg = MIMEText('WORNIG!!! Someone invaded!')
+            msg['subject'] = 'WORNIG!!!'
+            msg['From'] = 'from_gmailaddress'
+            msg['To'] = 'to_mailaddress'
+            msg['Date'] = formatdate()
+            smtpobj.sendmail("from_gmailaddress", "to_mailaddress", msg.as_string())
 smtpobj.close()
 ser.close()
