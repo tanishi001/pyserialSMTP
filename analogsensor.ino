@@ -9,20 +9,17 @@ void setup() {
 
 void loop() {
   byte var;
-  /*int value = analogRead(SENSOR);*/
-  /*Serial.println(value);*/
-  //Serial.println(5);
+  int value = analogRead(SENSOR);*/
+  Serial.println(value);
   delay(500);
   var = Serial.read();
   if (var == '1'){
-    //analogWrite(SPEAKER, HIGH);
-    Serial.println("200");
+    tone(SPEAKER, 256, 1000);
     delay(500);
   }else{
-    Serial.println("404");
-    /*analogWrite(LED, HIGH);
+    analogWrite(LED, HIGH);
     delay(2500);
-    analogWrite(LED, LOW);*/
+    analogWrite(LED, LOW);
     delay(500);
   }
   delay(1000);
