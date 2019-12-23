@@ -2,6 +2,7 @@ import serial
 import smtplib
 import datetime
 import sys
+import time
 from email.mime.text import MIMEText
 from email.utils import formatdate
 
@@ -41,5 +42,6 @@ while True:
             msg['To'] = 'to_mailaddress'
             msg['Date'] = formatdate()
             smtpobj.sendmail("from_gmailaddress", "to_mailaddress", msg.as_string())
+    time.sleep(3)
 smtpobj.close()
 ser.close()
