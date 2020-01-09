@@ -6,3 +6,14 @@ Ardinoから距離センサーの値をPythonで書いたプログラム側に�
 analogsensor.ino
 ## Python 3
 pyserialGmail.py
+
+
+＃コード内の”は外し’は残す \
+＃from_gmailaddressとto_gmailaddressは送り元と送り先のアドレスに置き換える
+
+|Code  | replace   |
+|---|---|
+| "from_gmailaddress"  | example@gmail.com  |
+
+| 'from_gmailaddress'  | 'example@gmail.com'  |
+|---|---|
